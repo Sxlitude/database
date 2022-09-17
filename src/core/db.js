@@ -2,6 +2,8 @@ const Cache = { keys: [] };
 
 module.exports = {
   Cache: Cache,
+
+
   get: (key) => {
     const keys = Cache.keys;
     const getKey = keys.find(k => k.key === key);
@@ -28,6 +30,17 @@ module.exports = {
       Cache.keys = filter(keys, k);
       return true;
     }
+  },
+
+  list: (prefix, pref) => {
+    const result = [];
+    const keys = Cache.keys;
+    keys.forEach(x => {
+      if (x.key.startsWith(prefix)) {
+        if (pref === true) result.push(x.key)
+        else result.push(x.value);
+      }
+    }); return result;
   }
 }
 

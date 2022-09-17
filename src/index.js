@@ -11,17 +11,21 @@ function handler(req, res) {
   const query = req.url;
   
   if (query === '/get') {
-    require('./web/db/get')(req, res, db)
+    require('./web/db/get')(req, res, db);
   }
 
   else if (query === '/set') {
-    require('./web/db/set')(req, res, db)
+    require('./web/db/set')(req, res, db);
   }
 
   else if (query === '/delete') {
-    require('./web/db/del')(req, res, db)
+    require('./web/db/del')(req, res, db);
   }
-  
+
+  else if (query === '/list') {
+    require('./web/db/list')(req, res, db);
+  }
+
   else {
     res.end(JSON.stringify({ err: 'not found' }));
   }

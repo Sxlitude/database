@@ -4,6 +4,13 @@
 - it's still in development
 > :warning: This project is made for experiments and testing; and it's not meant to be used on personal projects as i'm still learning about http module. For now, just use it for fun!
 
+#### What's New? 
+- You can now list keys that have a prefix!
+
+#### Features I'm working on
+- an authentication url
+- a library based on it
+- rate limit system
 
 ## How to use it?
 ### First Project (or Repl)
@@ -66,6 +73,22 @@ const response = await phin({
 }); console.log(response.body.deleted) // -> true
 ```
 You can check whether a key is deleted or not by the response body's deleted property. If it is `true`, then the task is done !
+
+- List all keys with a prefix
+```js
+phin({
+  method: 'GET',
+  parse: 'json',
+  url: 'https://httpServer.grvcdz.repl.co/list',
+    data: {
+      prefix: `guild_`,
+      showKeys: true
+    }
+  }).then(res => {
+    const arrayOfKeys = res.body.result;
+})
+```
+The above code is an example of how you can list keys that have a prefix in common. The `showKeys` option isn't required to write. It is already true by default. If you set `showKeys` to `false`, you will get the array of values only.
 
 - Code So Far
 ```js
