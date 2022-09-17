@@ -108,6 +108,9 @@ async function Database () {
   const deleted = response.body.deleted;
   if (deleted) console.log('deleted!');
 }
+
+// Call the function 
+Database();
 ```
 
 ### Contribution
