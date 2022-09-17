@@ -74,7 +74,7 @@ const response = await phin({
 ```
 You can check whether a key is deleted or not by the response body's deleted property. If it is `true`, then the task is done !
 
-- List all keys with a prefix
+- List all keys with a prefix **(NEW)**
 ```js
 phin({
   method: 'GET',
@@ -130,6 +130,18 @@ async function Database () {
   }); 
   const deleted = delkey.body.deleted;
   if (deleted) console.log('deleted!');
+
+  phin({
+  method: 'GET',
+  parse: 'json',
+  url: 'https://httpServer.grvcdz.repl.co/list',
+    data: {
+      prefix: `guild_`,
+      showKeys: true
+    }
+  }).then(res => {
+    const arrayOfKeys = res.body.result;
+  });
 }
 
 // Call the function 
