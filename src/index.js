@@ -4,7 +4,7 @@ const port = 8000;
 
 http.createServer(handler)
   .listen(port, () => {
-    console.log('Listening to Port')
+    console.log('Listening to Port ' + port + '!')
   });
 
 function handler(req, res) {
