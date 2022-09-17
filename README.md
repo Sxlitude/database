@@ -85,7 +85,7 @@ async function Database () {
   });
 
   /* Get a key's value */
-  const response = await phin({
+  const getkey = await phin({
     method: 'GET',
     url: 'webserver_url/get',
     parse: 'json',
@@ -93,11 +93,11 @@ async function Database () {
       key: 'guild_83726472'
     }
   }); 
-  const value = response.body.value;
+  const value = getkey.body.value;
   console.log(value); // -> 6000
 
   /* Delete a key */
-  const response = await phin({
+  const delkey = await phin({
     method: 'DELETE',
     parse: 'json',
     url: 'https://httpServer.grvcdz.repl.co/delete',
@@ -105,7 +105,7 @@ async function Database () {
       key: 'guild_83726472'
     }
   }); 
-  const deleted = response.body.deleted;
+  const deleted = delkey.body.deleted;
   if (deleted) console.log('deleted!');
 }
 
